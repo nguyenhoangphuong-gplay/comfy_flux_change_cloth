@@ -3,12 +3,8 @@
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "images": ("IMAGE",),
-                "max_width": ("INT", {"default": 1024, "min": 0}),
-                "max_height": ("INT", {"default": 1024, "min": 0}),
-                "min_width": ("INT", {"default": 0, "min": 0}),
-                "min_height": ("INT", {"default": 0, "min": 0}),
-                "crop_if_required": (["yes", "no"], {"default": "no"}),
+                "base_image": ("IMAGE", ""),
+                "fill_model": ("MODEL", {"tooltip": "Flux fill model"}),
             },
         }
 
@@ -17,8 +13,7 @@
     CATEGORY = "image"
     OUTPUT_IS_LIST = (True,)
 
-    def fluxClothChange(self, images, max_width, max_height, min_width, min_height, crop_if_required):
-        crop_if_required = crop_if_required == "yes"
+    def fluxClothChange(self, model):
         results = []
         return (results,)
 
